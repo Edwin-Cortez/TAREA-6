@@ -1,0 +1,21 @@
+-- Crear base de datos
+CREATE DATABASE demo_db;
+USE demo_db;
+
+-- Crear tabla estudiante
+CREATE TABLE estudiante (
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            nombre VARCHAR(100) NOT NULL,
+                            edad INT
+);
+
+-- Crear tabla cursos_asignados
+CREATE TABLE cursos_asignados (
+                                  id INT AUTO_INCREMENT PRIMARY KEY,
+                                  estudiante_id INT NOT NULL,
+                                  nombre VARCHAR(100) NOT NULL,
+                                  horario VARCHAR(50) NOT NULL,
+                                  CONSTRAINT fk_curso_est FOREIGN KEY (estudiante_id)
+                                      REFERENCES estudiante(id)
+                                      ON DELETE CASCADE
+);
